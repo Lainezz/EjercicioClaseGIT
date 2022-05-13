@@ -20,7 +20,7 @@ public class SeleccionaDatosDeTabla {
 
 	public void consultarDatos() {
 		
-		String query = "SELECT * FROM clientes, escrituras, escCli"
+		String query = "SELECT * FROM clientes, escrituras, escCli "
 				+ "WHERE clientes.cod_Cliente = escCli.codCli AND "
 				+ "escrituras.cod_escritura = escCli.codEsc";
 		ConexionMysql mysql = new ConexionMysql();
