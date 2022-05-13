@@ -32,7 +32,7 @@ public class EliminaTabla {
             s.executeUpdate(query);
 
             //Mensaje de confirmaci�n de que las tablas han sido eliminadas
-            System.out.println ("\n *** Tablas eliminadas ***");
+            System.out.println ("\n ** Tablas eliminadas **");
         }catch (SQLException e) {
             System.err.println ("Error al intentar borrar las tablas. ");
             
