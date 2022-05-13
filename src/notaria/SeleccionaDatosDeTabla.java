@@ -3,6 +3,9 @@ package notaria;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Scanner;
+
+import gestion.ConexionMySQL;
 
 public class SeleccionaDatosDeTabla {
 	/**
@@ -72,25 +75,31 @@ public class SeleccionaDatosDeTabla {
 	 */
 	public void consultarDatos(String dato) {
 		
+		Scanner scan = new Scanner(System.in);
+		ConexionMysql conexion = new ConexionMysql();
 		String query;
-		ResultSet rs = null;
-		Connection conn;
-		Statement s;
+		Connection conn = conexion.Conectar();
 		try {
-			//TODO realizar conexion y ejecutar query
 			
-
+			Statement s = conn.createStatement();
+			
+			query = "SELECT c.cod_Cliente, c.nombre, c.telefono, e.cod_Escritura, e.tipo, e.nom_fich, e.num_interv, ec.codigo FROM clientes AS c\r\n"
+					+ "JOIN escrituras AS e ON c.cod_Cliente = ec.codCli\r\n"
+					+ "JOIN escCli AS ec ON e.cod_Escritura = ec.codEsc\r\n"
+					+ "WHERE e.tipo = '"+dato+"';";
+			
+			ResultSet rs = s.executeQuery(query); 
+			
 			System.out.println("\n**********************************");
 			System.out.println("LOS DATOS DE LA TABLA CLIENTE SON:");
 			System.out.println("**********************************");
 			while (rs.next()) {
-				// TODO mostrar los resultados de la consulta
-			}
-
+				System.out.println(rs.getString(1)+", "+rs.getString(2)+", "+rs.getString(3)+", "+rs.getString(4)+", "+rs.getString(5)+", "+rs.getString(6)+", "+rs.getString(7)+", "+rs.getString(8));
+				}  
 		} catch (Exception e) {
 			System.err.println("Se han encontrado errores.- " + e.toString());
 		} finally {
-			//TODO cierra la conexion
+			conexion.desconectar(conn);
 		}
 	}
 	

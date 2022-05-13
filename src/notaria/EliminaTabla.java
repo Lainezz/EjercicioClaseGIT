@@ -11,27 +11,32 @@ import java.sql.Statement;
 public class EliminaTabla { 
     
 	/**
-	 * Método que borra las tres tablas de la base de datos notarbd.
+	 * Mï¿½todo que borra las tres tablas de la base de datos notarbd.
 	 * Las tablas a eliminar son escCli, clientes y escrituras
 	 * 
 	 * @author Joseph
 	 */
-    public void borrar () { 
+    public void borrar () {
         ConexionMysql mysql = new ConexionMysql();
         Connection conn;
         Statement s;
         try {
             //TODO establecer conexion a la base de datos y preparar las sentencias
-        	
+            conn = mysql.conectar();
+            s = conn.createStatement();
             //TODO sentencias para elminar las tablas de la base de datos
+            String query = ("DROP TABLE escCli;" +
+                            "DROP TABLE clientes;" +
+                            "DROP TABLE escrituras;");
+            s.executeUpdate(query);
 
-            
-        	//Mensaje de confirmación de que las tablas han sido eliminadas
+        	//Mensaje de confirmaciï¿½n de que las tablas han sido eliminadas
         	System.out.println ("\n *** Tablas eliminadas ***"); 
-        }catch (Exception e) { 
+        }catch (SQLException e) {
             System.err.println ("Error al intentar borrar las tablas. "); 
         } finally {
-            //TODO realizar la desconexión de la base de datos
+            //TODO realizar la desconexiï¿½n de la base de datos
+            mysql.desconectar(conn);
         }
     } 
 } 
