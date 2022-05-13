@@ -19,7 +19,7 @@ public class SeleccionaDatosDeTabla {
 	public void consultarDatos() {
 		
 		String query;
-		ResultSet rs;
+		ResultSet rs = null;
 		Connection conn;
 		Statement s;
 		try {
@@ -55,7 +55,7 @@ public class SeleccionaDatosDeTabla {
 	public void consultarDatos(String dato) {
 		
 		String query;
-		ResultSet rs;
+		ResultSet rs = null;
 		Connection conn;
 		Statement s;
 		try {
