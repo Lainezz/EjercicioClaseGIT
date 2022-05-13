@@ -16,23 +16,41 @@ public class SeleccionaDatosDeTabla {
 	 * 
 	 * @author Luis
 	 */
+
 	public void consultarDatos() {
 		
-		String query;
+		String query = "SELECT * FROM clientes, escrituras, escCli";
+		ConexionMysql mysql;
 		ResultSet rs;
 		Connection conn;
 		Statement s;
 		try {
 			//TODO realizar conexion y ejecutar query
 			
+			//Realizamos la conexión con la bbdd
+			mysql = new ConexionMysql();
+			conn = mysql.Conectar();
+			
+			//Preparo Statement
+			s = conn.createStatement();
 
+			//ejecuto la query
+			rs = s.executeQuery(query);
+
+			//Manejo los datos
 			System.out.println("\n**********************************");
 			System.out.println("LOS DATOS DE LA TABLA CLIENTE SON:");
 			System.out.println("**********************************");
 			while (rs.next()) {
 				// TODO mostrar los resultados de la consulta
+				System.out.println(rs.getInt(1));
+				
+				if (rs.getString("cod_ciudad").equals(rs.getString("codCli"))
+					&& rs.getString("cod_escritura").equals(rs.getString("codEsc"))) {
+					System.out.println(rs.getString("cod_ciudad"));
+					System.out.println(rs.getString("cod_escritura"));
+				}
 			}
-
 		} catch (Exception e) {
 			System.err.println("Se han encontrado errores.- " + e.toString());
 		} finally {
