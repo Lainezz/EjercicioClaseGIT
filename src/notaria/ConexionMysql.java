@@ -17,6 +17,12 @@ public class ConexionMysql {
 	 */
 	// TODO definici�n de las variables de clase.
 
+	final String url = "jdbc:mysql://localhost/";
+	final String nombre = "notarbd";
+	final String driver = "com.mysql.jdbc.Driver";
+	final String usuario = "root";
+	final String pass = "";
+
 	/**
 	 * M�todo para realizar una conexi�n con la base de datos. Los datos que vamos a
 	 * utilizar para realizar esa conexi�n son las variables de clase de arriba
@@ -31,7 +37,9 @@ public class ConexionMysql {
 		try {
 			// TODO cargamos el Driver
 
-			conn = DriverManager.getConnection("jdbc:mysql://localhost/notarbd", "root", "");
+			Class.forName(driver);
+
+			conn = DriverManager.getConnection(url + nombre, usuario, pass);
 
 			// TODO establecemos la conexi�n
 
