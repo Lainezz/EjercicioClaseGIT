@@ -5,8 +5,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Scanner;
 
-import gestion.ConexionMySQL;
-
 public class SeleccionaDatosDeTabla {
 	/**
 	 * M�todo que realiza una consulta a las tablas clientes, escrituras, y escCli.
