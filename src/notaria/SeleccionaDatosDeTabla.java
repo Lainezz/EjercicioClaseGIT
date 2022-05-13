@@ -25,16 +25,14 @@ public class SeleccionaDatosDeTabla {
 		String query = "SELECT * FROM clientes, escrituras, escCli"
 				+ "WHERE clientes.cod_Cliente = escCli.codCli AND "
 				+ "escrituras.cod_escritura = escCli.codEsc";
-		ConexionMysql mysql;
+		ConexionMysql mysql = new ConexionMysql();
 		ResultSet rs;
-		Connection conn;
+		Connection conn = mysql.Conectar();;
 		Statement s;
 		try {
 			//TODO realizar conexion y ejecutar query
 			
 			//Realizamos la conexión con la bbdd
-			mysql = new ConexionMysql();
-			conn = mysql.Conectar();
 			
 			//Preparo Statement
 			s = conn.createStatement();
@@ -67,7 +65,7 @@ public class SeleccionaDatosDeTabla {
 			System.err.println("Se han encontrado errores.- " + e.toString());
 		} finally {
 			//TODO cierra la conexion
-			conexion.desconectar(conn);
+			mysql.desconectar(conn);
 		}
 	}
 
