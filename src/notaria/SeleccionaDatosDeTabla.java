@@ -22,7 +22,9 @@ public class SeleccionaDatosDeTabla {
 
 	public void consultarDatos() {
 		
-		String query = "SELECT * FROM clientes, escrituras, escCli";
+		String query = "SELECT * FROM clientes, escrituras, escCli"
+				+ "WHERE clientes.cod_Cliente = escCli.codCli AND "
+				+ "escrituras.cod_escritura = escCli.codEsc";
 		ConexionMysql mysql;
 		ResultSet rs;
 		Connection conn;
@@ -46,13 +48,20 @@ public class SeleccionaDatosDeTabla {
 			System.out.println("**********************************");
 			while (rs.next()) {
 				// TODO mostrar los resultados de la consulta
-				System.out.println(rs.getInt(1));
-				
-				if (rs.getString("cod_ciudad").equals(rs.getString("codCli"))
-					&& rs.getString("cod_escritura").equals(rs.getString("codEsc"))) {
-					System.out.println(rs.getString("cod_ciudad"));
-					System.out.println(rs.getString("cod_escritura"));
-				}
+				System.out.println("\n *** CLIENTES ***");
+				System.out.println("Código del Cliente: "+rs.getString("cod_Cliente"));
+				System.out.println("Nombre: "+rs.getString("nombre"));
+				System.out.println("Teléfono: "+rs.getString("telefono"));
+				System.out.println("\n *** ESCRITURAS ***");
+				System.out.println("Código de Escritura: "+rs.getString("cod_Escritura"));
+				System.out.println("Tipo: "+rs.getString("tipo"));
+				System.out.println("Nombre del Fichero: "+rs.getString("nom_fich"));
+				System.out.println("Número Interv: "+rs.getString("num_interv"));
+				System.out.println("\n *** ESCRITURAS/CLIENTES ***");
+				System.out.println("Código: "+rs.getString("codigo"));
+				System.out.println("Código del Cliente: "+rs.getString("codCli"));
+				System.out.println("Código de Escritura: "+rs.getString("codEsc"));
+
 			}
 		} catch (Exception e) {
 			System.err.println("Se han encontrado errores.- " + e.toString());
