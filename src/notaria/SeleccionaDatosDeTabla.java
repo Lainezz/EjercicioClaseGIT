@@ -67,6 +67,7 @@ public class SeleccionaDatosDeTabla {
 			System.err.println("Se han encontrado errores.- " + e.toString());
 		} finally {
 			//TODO cierra la conexion
+			conexion.desconectar(conn);
 		}
 	}
 
