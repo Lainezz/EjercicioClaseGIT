@@ -64,13 +64,16 @@ local.properties
 ##############################
 ## NetBeans
 ##############################
-nbproject/private/
+nbproject/*
 build/
 nbbuild/
 dist/
 nbdist/
 nbactions.xml
 nb-configuration.xml
+manifest.mf
+build.xml
+
 
 ##############################
 ## Visual Studio Code
@@ -82,3 +85,4 @@ nb-configuration.xml
 ## OS X
 ##############################
 .DS_Store
+/EjercicioClaseGIT/nbproject/private/
