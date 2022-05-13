@@ -50,7 +50,7 @@ public class SeleccionaDatosDeTabla {
 	 * 
 	 * Muestra todos los resultados por consola.
 	 * 
-	 * @author Antonio Caparrós
+	 * @author Jorge
 	 */
 	public void consultarDatos(String dato) {
 		

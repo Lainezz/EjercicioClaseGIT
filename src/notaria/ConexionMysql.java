@@ -18,7 +18,7 @@ public class ConexionMysql{
      * usuario: el de por defecto de mysql
      * pass: por defecto está vacía
      * 
-     * @author Miguel Angel
+     * @author Antonio
      */
 	// TODO definición de las variables de clase.
 
@@ -26,7 +26,7 @@ public class ConexionMysql{
      * Método para realizar una conexión con la base de datos.
      * Los datos que vamos a utilizar para realizar esa conexión son las variables de clase de arriba
      * @return conn Objeto de tipo Connection
-     * @author Miguel Angel
+     * @author Antonio
      */
     public Connection Conectar(){
 
