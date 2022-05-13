@@ -5,11 +5,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Scanner;
 
-import gestion.ConexionMySQL;
-
 public class SeleccionaDatosDeTabla {
 	/**
-	 * Método que realiza una consulta a las tablas clientes, escrituras, y escCli.
+	 * Mï¿½todo que realiza una consulta a las tablas clientes, escrituras, y escCli.
 	 * 
 	 * Muestra todos los datos de las tablas anteriores con las siguientes condiciones:
 	 * cod_Cliente de la tabla clientes es igual al codCli de la tabla escCli
@@ -19,37 +17,63 @@ public class SeleccionaDatosDeTabla {
 	 * 
 	 * @author Luis
 	 */
+
 	public void consultarDatos() {
 		
-		String query;
-		ResultSet rs = null;
-		Connection conn;
+		String query = "SELECT * FROM clientes, escrituras, escCli"
+				+ "WHERE clientes.cod_Cliente = escCli.codCli AND "
+				+ "escrituras.cod_escritura = escCli.codEsc";
+		ConexionMysql mysql = new ConexionMysql();
+		ResultSet rs;
+		Connection conn = mysql.Conectar();;
 		Statement s;
 		try {
 			//TODO realizar conexion y ejecutar query
 			
+			//Realizamos la conexión con la bbdd
+			
+			//Preparo Statement
+			s = conn.createStatement();
 
+			//ejecuto la query
+			rs = s.executeQuery(query);
+
+			//Manejo los datos
 			System.out.println("\n**********************************");
 			System.out.println("LOS DATOS DE LA TABLA CLIENTE SON:");
 			System.out.println("**********************************");
 			while (rs.next()) {
 				// TODO mostrar los resultados de la consulta
-			}
+				System.out.println("\n *** CLIENTES ***");
+				System.out.println("Código del Cliente: "+rs.getString("cod_Cliente"));
+				System.out.println("Nombre: "+rs.getString("nombre"));
+				System.out.println("Teléfono: "+rs.getString("telefono"));
+				System.out.println("\n *** ESCRITURAS ***");
+				System.out.println("Código de Escritura: "+rs.getString("cod_Escritura"));
+				System.out.println("Tipo: "+rs.getString("tipo"));
+				System.out.println("Nombre del Fichero: "+rs.getString("nom_fich"));
+				System.out.println("Número Interv: "+rs.getString("num_interv"));
+				System.out.println("\n *** ESCRITURAS/CLIENTES ***");
+				System.out.println("Código: "+rs.getString("codigo"));
+				System.out.println("Código del Cliente: "+rs.getString("codCli"));
+				System.out.println("Código de Escritura: "+rs.getString("codEsc"));
 
+			}
 		} catch (Exception e) {
 			System.err.println("Se han encontrado errores.- " + e.toString());
 		} finally {
 			//TODO cierra la conexion
+			mysql.desconectar(conn);
 		}
 	}
 
 	/**
-	 * Método que realiza una consulta a las tablas clientes, escrituras, y escCli.
+	 * Mï¿½todo que realiza una consulta a las tablas clientes, escrituras, y escCli.
 	 * 
 	 * Muestra todos los datos de las tablas anteriores con las siguientes condiciones:
 	 * cod_Cliente de la tabla clientes es igual al codCli de la tabla escCli
 	 * cod_escritura de la tabla escrituras es igual al codEsc de la tabla escCli
-	 * tipo de la tabla escrituras es igual al parámetro dato de tipo {@link String} que le viene dado por parámetros
+	 * tipo de la tabla escrituras es igual al parï¿½metro dato de tipo {@link String} que le viene dado por parï¿½metros
 	 * 
 	 * Muestra todos los resultados por consola.
 	 * 
@@ -86,9 +110,9 @@ public class SeleccionaDatosDeTabla {
 	}
 	
 	/**
-	 * Método que realiza una consulta a las tablas clientes.
+	 * Mï¿½todo que realiza una consulta a las tablas clientes.
 	 * 
-	 * Realiza una consulta a la tabla clientes y devuelve true si existe el código de cliente que se quiere consultar
+	 * Realiza una consulta a la tabla clientes y devuelve true si existe el cï¿½digo de cliente que se quiere consultar
 	 * 
 	 * @return true si el cliente existe en la tabla, false si el cliente no existe.
 	 * @author Roberto
@@ -96,27 +120,36 @@ public class SeleccionaDatosDeTabla {
 	public boolean consultarCodCliente(String codCliente) {
 		
 		boolean clienteExiste = false;
-		String query;
+		
 		ResultSet rs;
-		Connection conn;
+		Connection conn = null ;
 		Statement s;
+                ConexionMysql conexionmysql = new ConexionMysql();
 		try {
 			//TODO realizar conexion y ejecutar query
-			
-
+                      conn  = conexionmysql.Conectar();
+                      s = conn.createStatement();
+                      String query = ("SELECT * FROM clientes WHERE cod_Cliente = '"+codCliente+"'");                     
+                      clienteExiste=s.execute(query);
+                      if(clienteExiste==true){
+                          System.out.println("Cliente existente con el ID indicado");
+                      }else{
+                          System.out.println("No existe ningun cliente con el ID indicado");
+                      }
 			
 
 		} catch (Exception e) {
 			System.err.println("Se han encontrado errores.- " + e.toString());
 		} finally {
 			//TODO cierra la conexion
+                        conexionmysql.desconectar(conn);
 		}
 		
 		return clienteExiste;
 	}
 	
 	/**
-	 * Método que realiza una consulta a las tablas clientes.
+	 * Mï¿½todo que realiza una consulta a las tablas clientes.
 	 * 
 	 * Realiza una consulta a la tabla clientes y devuelve true si existe el nombre del cliente que se quiere consultar
 	 * 

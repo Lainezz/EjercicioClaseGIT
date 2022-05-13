@@ -23,19 +23,28 @@ public class MenuOpciones { // clase que contien el menu de opciones
 	 * (7). Salir
 	 * 
 	 * @return opcion lo que el usuario ha introducido por teclado. De tipo entero
-	 * @author Conrado
+	 * @author Diego
 	 */
 	public int menuPrincipal() {
-		//Opcion que devuelve el método. Esta opción la actualiza el usuario cuando leemos lo que introduce por teclado.
-		int opcion = 0;
-		try {
-			//TODO sysos con el menu
-			
-			//TODO leer por teclado lo que el user introduce
+		int opcion=0;
+        try {
+            System.out.println("\n\n----------------------------------------------------");
+            System.out.println("*** NOTARIA DEL ESTADO ***");
+            System.out.println("----------------------------------------------------");
+            System.out.println("(1). Crear tablas ");
+            System.out.println("(2). Ingresar datos ");
+            System.out.println("(3). Consulta general ");
+            System.out.println("(4). Consulta documento determinado ");
+            System.out.println("(5). ActualizaciÃ³n cliente ");
+            System.out.println("(6). Eliminar tablas ");
+            System.out.println("(7). Salir ");
+            System.out.println("----------------------------------------------------");
+            System.out.println("----------------------------------------------------");
+            opcion=UtilConsola.leerEntero("Inserta la opciÃ³n.- ", true);
 			
 		} catch (Exception e) {
 			//TODO si el usuario introduce algo que no es un número, se controla la excepción
-			
+			System.err.println("Error debe digitar una de las opciones. ");
 		}
 		return opcion;
 	}
