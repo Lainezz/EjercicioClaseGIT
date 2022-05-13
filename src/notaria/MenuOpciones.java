@@ -1,9 +1,10 @@
 package notaria;
 
+import java.sql.Connection;
 import java.util.Scanner;
 
 public class MenuOpciones { // clase que contien el menu de opciones
-
+	
 	String msg = "****************Ingrese la Opcion****************";
 
 	/**
@@ -30,54 +31,45 @@ public class MenuOpciones { // clase que contien el menu de opciones
 	public int menuPrincipal() {
 		//Opcion que devuelve el método. Esta opción la actualiza el usuario cuando leemos lo que introduce por teclado.
 		Scanner scan = new Scanner(System.in);
+		String tablaCrear;
 		int opcion = 0;
-		boolean opcionCorrecta= false;
-		while (!opcionCorrecta) {
 			try {
 			//TODO sysos con el menu
 			System.out.println("Introduzca el numero por teclado, que desee hacer. ");
+			System.out.println("(1) Crear tablas. "
+					+ "(2) Ingresar datos "
+					+ "(3) Consulta general. "
+					+ "(4) Consulta documento determinado. "
+					+ "(5) Actualizacion cliente. "
+					+ "(6) Eliminar tablas. "
+					+ "(7) Salir. ");
 			//TODO leer por teclado lo que el user introduce
 			opcion=scan.nextInt();
+		if (opcion ==1) {
+			System.out.println("Creacion de tablas");
+		}
+		else if (opcion ==2) {
+			System.out.println("Insertar datos");
+		}
+		else if (opcion ==3) {
+			System.out.println("Consulta general");
+		}
+		else if (opcion ==4) {
+			System.out.println("Consulta documento determinado");
+		}
+		else if (opcion ==5) {
+			System.out.println("Actualizacion");
+		}
+		else if (opcion ==6) {
+			System.out.println("Eliminar tablas");
+		}
+		else {
 			
-			switch (opcion) {
-			case 1:
-				opcionCorrecta = true;
-				System.out.println("Crear Tablas");
-				break;
-			case 2:
-				opcionCorrecta = true;
-				System.out.println("Ingresar Datos");
-				break;
-			case 3:
-				opcionCorrecta = true;
-				System.out.println("Consulta general");
-				break;
-			case 4:
-				opcionCorrecta = true;
-				System.out.println("Consulta documento determinado");
-				break;
-			case 5:
-				opcionCorrecta = true;
-				System.out.println("Actualizacion cliente");
-				break;
-			case 6:
-				opcionCorrecta = true;
-				System.out.println("Eliminar tablas");
-				break;
-			case 7:
-				opcionCorrecta = true;
-				System.out.println("EXIT");
-				break;
-			default:
-				opcionCorrecta = false;
-				System.out.println("MAL");
-				break;
-			}
+		}
 		} catch (Exception e) {
 			//TODO si el usuario introduce algo que no es un número, se controla la excepción
 			System.out.println("FATAL");
 			
-		}
 		}
 		return opcion;
 	}

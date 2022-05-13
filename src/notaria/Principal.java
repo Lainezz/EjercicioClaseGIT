@@ -10,7 +10,7 @@ public class Principal {
     public static void main(String[] args) {
         //men obtiene el valor de la opcion seleccionada
         MenuOpciones men= new MenuOpciones();
-        CreaTabla ct=new CreaTabla();
+        CreaTabla ct= new CreaTabla();
         EliminaTabla et = new EliminaTabla();
         InsertaDatosEnLaTabla agregar=new InsertaDatosEnLaTabla();
         SeleccionaDatosDeTabla seleccion=new SeleccionaDatosDeTabla();
