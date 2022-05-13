@@ -5,54 +5,64 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
+public class ConexionMysql {
 
+	/**
+	 * Variables de la clase. Estas variables se refieren a los datos necesarios
+	 * para poder realizar una conexiï¿½n con la base de datos. Los datos son: nombre
+	 * de la base de datos: notarbd url: es una base de datos mysql, utilizamos
+	 * xampp usuario: el de por defecto de mysql pass: por defecto estï¿½ vacï¿½a
+	 * 
+	 * @author Antonio
+	 */
+	// TODO definiciï¿½n de las variables de clase.
 
-public class ConexionMysql{
+	final String url = "jdbc:mysql://localhost/";
+	final String nombre = "notarbd";
+	final String driver = "com.mysql.jdbc.Driver";
+	final String usuario = "root";
+	final String pass = "";
 
-    /**
-     * Variables de la clase.
-     * Estas variables se refieren a los datos necesarios para poder realizar una conexión con la base de datos.
-     * Los datos son:
-     * nombre de la base de datos: notarbd
-     * url: es una base de datos mysql, utilizamos xampp
-     * usuario: el de por defecto de mysql
-     * pass: por defecto está vacía
-     * 
-     * @author Antonio
-     */
-	// TODO definición de las variables de clase.
+	/**
+	 * Mï¿½todo para realizar una conexiï¿½n con la base de datos. Los datos que vamos a
+	 * utilizar para realizar esa conexiï¿½n son las variables de clase de arriba
+	 * 
+	 * @return conn Objeto de tipo Connection
+	 * @author Antonio
+	 */
+	public Connection Conectar() {
 
-    /**
-     * Método para realizar una conexión con la base de datos.
-     * Los datos que vamos a utilizar para realizar esa conexión son las variables de clase de arriba
-     * @return conn Objeto de tipo Connection
-     * @author Antonio
-     */
-    public Connection Conectar(){
+		Connection conn = null;
 
-        Connection conn = null;
+		try {
+			// TODO cargamos el Driver
 
-        try{
-            //TODO cargamos el Driver
-            
-            //TODO establecemos la conexión
-        	
-        }
-        catch(ClassNotFoundException | SQLException e){
-            JOptionPane.showMessageDialog(null, e);
-        }
-        return conn;
-    }
-    
-    /**
-	 * Metodo que, en el caso de existir una conexion a una base de datos, realiza la desconexion de la misma.
+			Class.forName(driver);
+
+			conn = DriverManager.getConnection(url + nombre, usuario, pass);
+
+			// TODO establecemos la conexiï¿½n
+
+			if (conn != null) {
+				System.out.println("[Conectado]\r\n");
+			}
+
+		} catch (ClassNotFoundException | SQLException e) {
+			JOptionPane.showMessageDialog(null, e);
+		}
+		return conn;
+	}
+
+	/**
+	 * Metodo que, en el caso de existir una conexion a una base de datos, realiza
+	 * la desconexion de la misma.
+	 * 
 	 * @author Miguel Angel
 	 */
 	public void desconectar(Connection conn) {
 		try {
-			// TODO Si existe una conexión, cierra la conexión
-			
-			
+			// TODO Si existe una conexiï¿½n, cierra la conexiï¿½n
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
