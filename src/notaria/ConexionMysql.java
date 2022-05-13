@@ -57,11 +57,14 @@ public class ConexionMysql {
 	 * Metodo que, en el caso de existir una conexion a una base de datos, realiza
 	 * la desconexion de la misma.
 	 * 
-	 * @author Miguel Angel
+	 * @author Diego
 	 */
 	public void desconectar(Connection conn) {
 		try {
-			// TODO Si existe una conexi�n, cierra la conexi�n
+			if(conn != null) {
+				conn.close();
+				System.out.println("[Desconectado]");
+			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
