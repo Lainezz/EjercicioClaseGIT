@@ -129,7 +129,7 @@ public class SeleccionaDatosDeTabla {
 			//TODO realizar conexion y ejecutar query
                       conn  = conexionmysql.Conectar();
                       s = conn.createStatement();
-                      String query = ("SELECT * FROM clientes WHERE ID = "+codCliente);                     
+                      String query = ("SELECT * FROM clientes WHERE cod_Cliente = '"+codCliente+"'");                     
                       clienteExiste=s.execute(query);
                       if(clienteExiste==true){
                           System.out.println("Cliente existente con el ID indicado");
