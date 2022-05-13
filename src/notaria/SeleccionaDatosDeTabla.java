@@ -14,7 +14,7 @@ public class SeleccionaDatosDeTabla {
 	 * 
 	 * Muestra todos los resultados por consola.
 	 * 
-	 * @author Roberto y Carlos
+	 * @author Luis
 	 */
 	public void consultarDatos() {
 		
@@ -82,9 +82,39 @@ public class SeleccionaDatosDeTabla {
 	 * Realiza una consulta a la tabla clientes y devuelve true si existe el código de cliente que se quiere consultar
 	 * 
 	 * @return true si el cliente existe en la tabla, false si el cliente no existe.
-	 * @author Luis
+	 * @author Roberto
 	 */
 	public boolean consultarCodCliente(String codCliente) {
+		
+		boolean clienteExiste = false;
+		String query;
+		ResultSet rs;
+		Connection conn;
+		Statement s;
+		try {
+			//TODO realizar conexion y ejecutar query
+			
+
+			
+
+		} catch (Exception e) {
+			System.err.println("Se han encontrado errores.- " + e.toString());
+		} finally {
+			//TODO cierra la conexion
+		}
+		
+		return clienteExiste;
+	}
+	
+	/**
+	 * Método que realiza una consulta a las tablas clientes.
+	 * 
+	 * Realiza una consulta a la tabla clientes y devuelve true si existe el nombre del cliente que se quiere consultar
+	 * 
+	 * @return true si el cliente existe en la tabla, false si el cliente no existe.
+	 * @author Carlos
+	 */
+	public boolean consultarNomCliente(String NomCliente) {
 		
 		boolean clienteExiste = false;
 		String query;
