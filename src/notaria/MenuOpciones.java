@@ -1,8 +1,5 @@
 package notaria;
 
-import java.sql.Connection;
-import java.util.Scanner;
-
 public class MenuOpciones { // clase que contien el menu de opciones
 	
 	String msg = "****************Ingrese la Opcion****************";
@@ -43,7 +40,7 @@ public class MenuOpciones { // clase que contien el menu de opciones
             System.out.println("(7). Salir ");
             System.out.println("----------------------------------------------------");
             System.out.println("----------------------------------------------------");
-            opcion=UtilConsola.leerEntero("Inserta la opciÃ³n.- ", true);
+            opcion=UtilConsola.leerEntero("Inserta la opcion.- ", true);
 			
 		} catch (Exception e) {
 			//TODO si el usuario introduce algo que no es un número, se controla la excepción
