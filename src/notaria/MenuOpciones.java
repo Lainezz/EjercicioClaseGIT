@@ -1,7 +1,10 @@
 package notaria;
 
-public class MenuOpciones { // clase que contien el menu de opciones
+import java.sql.Connection;
+import java.util.Scanner;
 
+public class MenuOpciones { // clase que contien el menu de opciones
+	
 	String msg = "****************Ingrese la Opcion****************";
 
 	/**

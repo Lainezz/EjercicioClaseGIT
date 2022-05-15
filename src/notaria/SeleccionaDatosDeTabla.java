@@ -89,9 +89,9 @@ public class SeleccionaDatosDeTabla {
 			
 			Statement s = conn.createStatement();
 			
-			query = "SELECT c.cod_Cliente, c.nombre, c.telefono, e.cod_Escritura, e.tipo, e.nom_fich, e.num_interv, ec.codigo FROM clientes AS c\r\n"
-					+ "JOIN escrituras AS e ON e.cod_Escritura = ec.codEsc\\r\\n"
-					+ "JOIN escCli AS ec ON ec.codCli = c.cod_Cliente\\r\\n"
+			query = "SELECT c.cod_Cliente, c.nombre, c.telefono, e.cod_Escritura, e.tipo, e.nom_fich, e.num_interv, ec.codigo FROM clientes AS c "
+					+ "JOIN escrituras AS e ON e.cod_Escritura = ec.codEsc "
+					+ "JOIN escCli AS ec ON ec.codCli = c.cod_Cliente "
 					+ "WHERE e.tipo = '"+dato+"';";
 			
 			ResultSet rs = s.executeQuery(query); 
